@@ -5,6 +5,7 @@ import pages.components.CalendarComponent;
 import pages.components.ResultPracticeFormComponent;
 import pages.components.StateAndCityComponent;
 
+import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
@@ -23,7 +24,8 @@ public class PracticeFormPage {
             currentAddressInput = $("#currentAddress"),
             stateInput = $("#state"),
             cityInput = $("#city"),
-            submit = $("#submit");
+            submit = $("#submit"),
+            resulModalWindow = $(".modal-content");
 
     CalendarComponent calendar = new CalendarComponent();
     ResultPracticeFormComponent resultPracticeForm = new ResultPracticeFormComponent();
@@ -106,5 +108,9 @@ public class PracticeFormPage {
     public PracticeFormPage checkResult(String key, String value) {
         resultPracticeForm.checkResultForm(key, value);
         return this;
+    }
+
+    public void checkAbsenceFormResult() {
+        resulModalWindow.shouldNotBe(visible);
     }
 }

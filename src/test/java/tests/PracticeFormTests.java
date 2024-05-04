@@ -9,7 +9,7 @@ public class PracticeFormTests extends TestBase {
     PracticeFormPage practiceFormPage = new PracticeFormPage();
 
     @Test
-    void fullFormTest() {
+    void fullFillFormTest() {
         practiceFormPage.openPage()
                 .setFirstName("Artur")
                 .setLastName("King")
@@ -34,5 +34,31 @@ public class PracticeFormTests extends TestBase {
                 .checkResult("Picture", "Example.jpg")
                 .checkResult("Address", "Castle Camelot")
                 .checkResult("State and City", "NCR Delhi");
+    }
+
+    @Test
+    void shortFillFormTest() {
+        practiceFormPage.openPage()
+                .setFirstName("Artur")
+                .setLastName("King")
+                .setGender("Male")
+                .setUserNumber("9611111111")
+                .setDateOfBirth("30", "November", "1992")
+                .submitClick()
+                .checkResult("Student Name", "Artur King")
+                .checkResult("Gender", "Male")
+                .checkResult("Mobile", "9611111111")
+                .checkResult("Date of Birth", "30 November,1992");
+    }
+
+    @Test
+    void incorrectFillFormTest() {
+        practiceFormPage.openPage()
+                .setFirstName("Artur")
+                .setLastName("King")
+                .setGender("Male")
+                .setDateOfBirth("30", "November", "1992")
+                .submitClick()
+                .checkAbsenceFormResult();
     }
 }
