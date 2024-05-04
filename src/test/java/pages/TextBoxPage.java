@@ -48,9 +48,9 @@ public class TextBoxPage {
         return this;
     }
 
-    public TextBoxPage checkResult(String key, String value) {
-        resulTable.$(byId(key)).parent()
-                .shouldHave(text(value));
+    public TextBoxPage checkResult(String id, String text) {
+        resulTable.$(byId(id)).parent()
+                .shouldHave(text(text));
         return this;
     }
 }
