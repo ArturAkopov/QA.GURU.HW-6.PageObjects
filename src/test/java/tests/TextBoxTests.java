@@ -15,9 +15,9 @@ public class TextBoxTests extends TestBase {
                 .setCurrentAddress("Castle Camelot")
                 .setPermanentAddress("Castle Camelot 2")
                 .submitClick()
-                .checkResult("Name:","Artur")
-                .checkResult("Email:","king@yandex.ru")
-                .checkResult("Current Address :","Castle Camelot")
-                .checkResult("Permananet Address :","Castle Camelot 2");
+                .checkResult("Name","Artur")
+                .checkResult("Email","king@yandex.ru")
+                .checkResult("Current Address","Castle Camelot")
+                .checkResult("Permananet Address","Castle Camelot 2");
     }
 }
